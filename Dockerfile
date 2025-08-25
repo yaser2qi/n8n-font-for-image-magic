@@ -1,10 +1,9 @@
-# پایه: n8n آخرین نسخه
 FROM n8nio/n8n:latest
 
-# سوئیچ به کاربر root برای نصب بسته‌ها
+# سوئیچ به کاربر root
 USER root
 
-# نصب ImageMagick و فونت‌ها با apk (مخصوص Alpine)
+# نصب ImageMagick و فونت‌ها روی Alpine
 RUN apk add --no-cache \
     imagemagick \
     fontconfig \
@@ -12,7 +11,7 @@ RUN apk add --no-cache \
     ttf-freefont \
     && rm -rf /var/cache/apk/*
 
-# ساخت فولدر برای فونت‌های سفارشی و اضافه کردن فونت فارسی
+# کپی فونت فارسی سفارشی
 RUN mkdir -p /usr/share/fonts/truetype/custom
 COPY Vazirmatn-Regular.ttf /usr/share/fonts/truetype/custom/
 RUN fc-cache -f -v
@@ -20,5 +19,4 @@ RUN fc-cache -f -v
 # برگرداندن کاربر به node
 USER node
 
-# پوشه کاری
 WORKDIR /data
