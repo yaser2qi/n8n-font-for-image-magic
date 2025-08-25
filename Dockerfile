@@ -13,8 +13,7 @@ RUN apk add --no-cache \
 
 # کپی فونت فارسی سفارشی (مثلا Vazirmatn)
 RUN mkdir -p /usr/share/fonts/truetype/custom
-COPY Vazirmatn-Regular.ttf/usr/share/fonts/truetype/custom/
-
+COPY Vazirmatn-Regular.ttf /usr/share/fonts/truetype/custom/
 RUN fc-cache -f -v
 
 # برگرداندن یوزر
