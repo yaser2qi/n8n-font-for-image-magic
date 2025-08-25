@@ -1,10 +1,10 @@
-# استفاده از ایمیج پایه n8n
+# ایمیج پایه n8n
 FROM n8nio/n8n:latest
 
 # رفتن به root برای نصب پکیج‌ها
 USER root
 
-# نصب ImageMagick و فونت‌های عمومی
+# نصب ImageMagick و فونت‌ها
 RUN apt-get update && apt-get install -y --no-install-recommends \
     imagemagick \
     fonts-dejavu-core \
@@ -24,5 +24,5 @@ RUN mkdir -p /usr/share/fonts/truetype/custom && \
 USER node
 WORKDIR /data
 
-# شروع n8n
+# دستور شروع n8n
 CMD ["n8n", "start"]
