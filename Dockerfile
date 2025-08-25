@@ -1,7 +1,8 @@
+# استفاده از ایمیج رسمی n8n
 FROM n8nio/n8n:latest
 
-# سوئیچ به root
-USER root
+# ست کردن دایرکتوری کاری
+WORKDIR /data
 
 # نصب ImageMagick و فونت‌ها روی Alpine
 RUN apk add --no-cache \
@@ -9,14 +10,10 @@ RUN apk add --no-cache \
     fontconfig \
     ttf-dejavu \
     ttf-freefont \
-    && rm -rf /var/cache/apk/*
+    font-noto
 
-# کپی فونت فارسی سفارشی (مثلا Vazirmatn)
-RUN mkdir -p /usr/share/fonts/truetype/custom
-COPY Vazirmatn-Regular.ttf /usr/share/fonts/truetype/custom/
-RUN fc-cache -f -v
+# پورت پیش‌فرض n8n
+EXPOSE 5678
 
-# برگرداندن یوزر
-USER node
-
-WORKDIR /data
+# اجرای n8n
+CMD ["n8n", "start"]
