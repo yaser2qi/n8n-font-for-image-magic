@@ -4,7 +4,7 @@ FROM n8nio/n8n:latest
 # ست کردن دایرکتوری کاری
 WORKDIR /data
 
-# نصب ImageMagick و فونت‌ها
+# نصب ImageMagick و فونت‌ها با apk (Alpine)
 RUN apk add --no-cache \
     imagemagick \
     fontconfig \
