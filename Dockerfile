@@ -1,12 +1,8 @@
-# استفاده از ایمیج رسمی n8n مبتنی بر Node.js
-FROM n8nio/n8n:latest
+# استفاده از Node.js رسمی
+FROM node:18-bullseye
 
-# ست کردن دایرکتوری کاری
-WORKDIR /data
-
-# نصب ImageMagick و فونت‌ها
-USER root
-RUN apt-get update && apt-get install -y --no-install-recommends \
+# نصب ابزارها و فونت‌ها
+RUN apt-get update && apt-get install -y \
     imagemagick \
     fonts-noto \
     fonts-dejavu-core \
@@ -15,6 +11,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     unzip \
     && rm -rf /var/lib/apt/lists/*
 
+# نصب n8n به صورت سراسری
+RUN npm install -g n8n
+
 # نصب فونت فارسی Vazir
 RUN wget https://github.com/rastikerdar/vazir-font/releases/download/v30.1.0/Vazir-font-v30.1.0.zip \
     -O /tmp/vazir.zip \
@@ -22,9 +21,11 @@ RUN wget https://github.com/rastikerdar/vazir-font/releases/download/v30.1.0/Vaz
     && fc-cache -fv \
     && rm /tmp/vazir.zip
 
-# تنظیم پورت پیش‌فرض n8n
+# ست کردن دایرکتوری کاری
+WORKDIR /data
+
+# پورت پیش‌فرض
 EXPOSE 5678
 
 # اجرای n8n
-USER node
 CMD ["n8n", "start"]
