@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     && rm -rf /var/lib/apt/lists/*
 
-# نصب n8n سراسری
+# نصب n8n به صورت سراسری
 RUN npm install -g n8n
 
 # نصب فونت فارسی Vazir
