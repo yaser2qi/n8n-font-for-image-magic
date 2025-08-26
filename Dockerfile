@@ -12,9 +12,6 @@ RUN apk add --no-cache \
     ttf-freefont \
     noto-fonts
 
-# کپی کردن فایل‌های پیکربندی (اختیاری)
-# COPY . .
-
 # پورت پیش‌فرض n8n
 EXPOSE 5678
 
