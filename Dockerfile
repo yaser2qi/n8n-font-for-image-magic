@@ -1,4 +1,4 @@
-# ایمیج رسمی Node.js
+# ایمیج رسمی Node.js با Debian
 FROM node:18-bullseye
 
 # نصب ابزارها و فونت‌ها
