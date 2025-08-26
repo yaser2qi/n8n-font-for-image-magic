@@ -1,4 +1,4 @@
-# استفاده از Node.js رسمی
+# ایمیج رسمی Node.js
 FROM node:18-bullseye
 
 # نصب ابزارها و فونت‌ها
@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     && rm -rf /var/lib/apt/lists/*
 
-# نصب n8n به صورت سراسری
+# نصب n8n سراسری
 RUN npm install -g n8n
 
 # نصب فونت فارسی Vazir
@@ -24,7 +24,7 @@ RUN wget https://github.com/rastikerdar/vazir-font/releases/download/v30.1.0/Vaz
 # ست کردن دایرکتوری کاری
 WORKDIR /data
 
-# پورت پیش‌فرض
+# پورت پیش‌فرض n8n
 EXPOSE 5678
 
 # اجرای n8n
